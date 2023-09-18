@@ -14,6 +14,7 @@
 		794EB7E82AB6290400205B85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794EB7E62AB6290400205B85 /* Main.storyboard */; };
 		794EB7EA2AB6290500205B85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794EB7E92AB6290500205B85 /* Assets.xcassets */; };
 		794EB7ED2AB6290500205B85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794EB7EB2AB6290500205B85 /* LaunchScreen.storyboard */; };
+		79F245702AB8E803009A394D /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 79F2456F2AB8E803009A394D /* FireParticles.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		794EB7E72AB6290400205B85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		794EB7E92AB6290500205B85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		794EB7EC2AB6290500205B85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		79F2456F2AB8E803009A394D /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				794EB7E42AB6290400205B85 /* GameViewController.swift */,
 				794EB7E62AB6290400205B85 /* Main.storyboard */,
 				794EB7E92AB6290500205B85 /* Assets.xcassets */,
+				79F2456F2AB8E803009A394D /* FireParticles.sks */,
 				794EB7EB2AB6290500205B85 /* LaunchScreen.storyboard */,
 			);
 			path = Project11;
@@ -128,6 +131,7 @@
 			files = (
 				794EB7E82AB6290400205B85 /* Main.storyboard in Resources */,
 				794EB7DF2AB6290400205B85 /* GameScene.sks in Resources */,
+				79F245702AB8E803009A394D /* FireParticles.sks in Resources */,
 				794EB7EA2AB6290500205B85 /* Assets.xcassets in Resources */,
 				794EB7ED2AB6290500205B85 /* LaunchScreen.storyboard in Resources */,
 			);
