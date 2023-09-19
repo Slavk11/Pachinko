@@ -13,6 +13,10 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+            if score == 5 {
+                scoreLabel.text = "Well Done!"
+                alertMessage()
+            }
         }
     }
     
@@ -67,7 +71,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         let objects = nodes(at: location)
         
-        if objects.contains(editLabel) {
+        if objects.contains(editLabel) && score < 5 {
             editingMode.toggle()
         } else {
             if editingMode {
@@ -88,15 +92,26 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.physicsBody?.isDynamic = false
                 addChild(box)
                 
-                
             } else {
-                let ball = SKSpriteNode(imageNamed: "ballRed")
-                ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
-                ball.physicsBody?.restitution = 0.4
-                ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
-                ball.position = location
-                ball.name = "ball"
-                addChild(ball)
+                let ballColor = [
+                    "ballRed",
+                    "ballGreen",
+                    "ballCyan",
+                    "ballPurple",
+                    "ballYellow",
+                    "ballGrey",
+                    "ballBlue"
+                ]
+                
+                    let ball = SKSpriteNode(imageNamed: ballColor.randomElement() ?? "ballRed")
+                    ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+                    ball.physicsBody?.restitution = 0.4
+                    ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
+                    ball.position = location
+                    ball.name = "ball"
+                    addChild(ball)
+                
+
             }
         }
     }
@@ -169,4 +184,15 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
             collision(between: nodeB, object: nodeA)
         }
     }
+    
+    func alertMessage() {
+        let ac = UIAlertController(title: "Well Done!", message: "Restart game and try again?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.score = 0
+        })
+        ac.addAction(UIAlertAction(title: "I want to go on Free to Play!", style: .destructive))
+        view?.window?.rootViewController?.present(ac, animated: true)
+    }
+    
+    
 }
