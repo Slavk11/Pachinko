@@ -122,8 +122,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
                     "ballBlue"
                 ]
                 
-                
-                
                 let ball = SKSpriteNode(imageNamed: ballColor.randomElement() ?? "ballRed")
                 ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
                 ball.physicsBody?.restitution = 0.4
@@ -131,8 +129,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
                 ball.position = location
                 ball.name = "ball"
                 addChild(ball)
-                
-                
             }
         }
     }
