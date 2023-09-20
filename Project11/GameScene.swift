@@ -18,7 +18,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
             if score == 5 {
                 scoreLabel.text = "Well Done!"
                 alertMessage()
-                
             }
         }
     }
@@ -29,6 +28,16 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
                 editLabel.text = "Done"
             } else {
                 editLabel.text = "Edit"
+            }
+        }
+    }
+    
+    var restartButton: Bool = false {
+        didSet {
+            if restartButton {
+                reset()
+            } else {
+                resetLabel.text = ""
             }
         }
     }
@@ -52,8 +61,9 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(editLabel)
         
         resetLabel = SKLabelNode(fontNamed: "Chalkduster")
-        resetLabel.text = "Reset Game!"
+        resetLabel.text = "Restart game!"
         resetLabel.position = CGPoint(x: 160, y: 650)
+        resetLabel.isHidden = true
         addChild(resetLabel)
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -98,6 +108,10 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
                 addChild(box)
                 
             } else {
+                if objects.contains(resetLabel) {
+                    restartButton.toggle()
+                }
+                
                 let ballColor = [
                     "ballRed",
                     "ballGreen",
@@ -107,6 +121,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
                     "ballGrey",
                     "ballBlue"
                 ]
+                
+                
                 
                 let ball = SKSpriteNode(imageNamed: ballColor.randomElement() ?? "ballRed")
                 ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
@@ -196,7 +212,9 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
             self?.score = 0
             self?.gameFinished()
         })
-        ac.addAction(UIAlertAction(title: "I want to go on Free to Play!", style: .destructive))
+        ac.addAction(UIAlertAction(title: "I want to go on Free to Play!", style: .destructive) { [weak self] _ in
+            self?.resetLabel.isHidden = false
+        })
         view?.window?.rootViewController?.present(ac, animated: true)
     }
     
